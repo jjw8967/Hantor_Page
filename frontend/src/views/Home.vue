@@ -1,24 +1,5 @@
-<!DOCTYPE html>
-<haed>
-    <title>HANTOR</title>
-</haed>
-<body>
-       
-    <header>
-        <div class="top">
-            <img src="img/mark.png" id="mark"/>
-            <h1 class="title">HANTOR</h1>
-        </div>
-        <nav>
-            <ul style="margin: 0 10%">    
-                
-                <li><a href="#home">Home</a></li>
-                <li><a href="#news">News</a></li>
-
-            </ul>
-        </nav>
-        
-    </header>
+<template>
+  <div class="home">
 
     <section>
         <div class="intro">
@@ -33,55 +14,27 @@
             </p>
         </div>   
     </section>
-</body>
+  </div>
+</template>
+
+<script>
+// @ is an alias to /src
+import HelloWorld from '@/components/HelloWorld.vue'
+
+export default {
+  name: 'home',
+  components: {
+    HelloWorld
+  }
+}
+</script>
 <style>
 .text {
     line-height:2.0em;
     font-size: 20px;
 }
-.title{
-    display: inline;
-    color:pink;
-}
-.top{
-    margin: 0 10%;
-}
-nav{
-    background-color:  #c2e6f0;
-}
-section{
-    margin: 0 10%;
-}
+
 .intro{
     margin: 0 10%;
-}
-#mark {
-    width: 100px; /* 이미지의 최대사이즈 */
-
-    vertical-align: bottom;
-}
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  
-}
-
-li {
-  float: left;
-}
-
-li a{
-  display: inline-block;
-  color: white;
-  font-size : 30px;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-li a:hover {
-    background-color: pink;
 }
 </style>
