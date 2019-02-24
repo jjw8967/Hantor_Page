@@ -15,3 +15,18 @@ router.post('/record',(req,res)=>{
         res.send("ok");
     })
 })
+
+router.get('/get/:num',(req,res)=>{
+    let num = req.params['num'];
+    boardModel.findOne({'num':num}).then((data)=>{
+        res.send(data);
+    })
+})
+
+router.post('/delete/:num',(req,res)=>{
+    let num = req.params['num'];
+    
+    boardModel.deleteOne({'num':num}).then((data)=>{
+        res.send("ok");
+    })
+})

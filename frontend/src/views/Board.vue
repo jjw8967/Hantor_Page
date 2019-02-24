@@ -10,7 +10,7 @@
         </tr>
       </thead>
       <tbody class="table-bordered">
-        <tr v-for="board in boardList">
+        <tr v-for="board in boardList" v-on:click="$router.push(`/board/get/${board.num}`)">
           <th>{{board.num}}</th>
           <td class="board-title">{{board.title}}</td>
           <td>{{board.author}}</td>

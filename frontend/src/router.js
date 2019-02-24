@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Board from './views/Board.vue'
 import writeBoard from './views/writeBoard.vue'
+import getBoard from './views/getBoard'
 
 Vue.use(Router)
 
@@ -25,8 +26,11 @@ export default new Router({
       path: '/board/write',
       name: 'writeBoard',
       component: writeBoard,
-
-
+    },
+    {
+      path: '/board/get/:num',
+      component : getBoard,
+      name: 'getBoard',
     }
   ]
 })
