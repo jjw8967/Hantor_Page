@@ -14,7 +14,7 @@
           <th>{{board.num}}</th>
           <td class="board-title">{{board.title}}</td>
           <td>{{board.author}}</td>
-          <td>{{board.date.substring(0,10)}}</td>
+          <td>{{board.date.substring(0,10).replace(/-/gi,'.')}}</td>
         </tr>
       </tbody>
     </table>

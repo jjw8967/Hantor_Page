@@ -11,7 +11,7 @@ Vue.config.productionTip = false
 
 const store = new Vuex.Store({
   state: {
-    baseUrl : "http://hantor.tk:8000"
+    baseUrl : "http://localhost:8000"
   },
   
 })

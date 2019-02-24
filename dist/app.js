@@ -7,7 +7,7 @@ app.engine('html', require('ejs').renderFile);
 
 app.use(express.static('./'));
 
-app.get('/',(req,res)=>{
+app.use('/',(req,res)=>{
     res.render('index.html');
 })
 

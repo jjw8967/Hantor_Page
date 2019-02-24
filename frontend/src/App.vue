@@ -7,7 +7,7 @@
     <header>
         <div class="top">
             <img src="img/mark.png" id="mark"/>
-            <h1 class="title">HANTOR</h1>
+            <span class="title">HANTOR</span>
         </div>
         <nav>
             <ul style="margin: 0 10%">    
@@ -75,12 +75,14 @@ section{
 .title{
     display: inline;
     color:pink;
+    font-size: 4vw;
+    font-weight: bold;
 }
 nav{
     background-color:  #c2e6f0;
 }
 #mark {
-    width: 100px; /* 이미지의 최대사이즈 */
+    width: 15%; /* 이미지의 최대사이즈 */
 
     vertical-align: bottom;
 }
@@ -96,10 +98,13 @@ overflow: hidden;
   
 display: inline-block;
 color: white;
-font-size : 30px;
+font-size : 3vw;
 text-align: center;
 padding: 14px 16px;
 text-decoration: none;
 }
 
+#app{
+  font-size: 2vw;
+}
 </style>
