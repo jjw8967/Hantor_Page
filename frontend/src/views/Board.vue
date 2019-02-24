@@ -32,11 +32,12 @@
 export default{
   data(){
     return{
-      boardList:[{"num":1,"title":"first","author":"jinu","date":"2019-02-22"}]
+      boardList:[],
+      baseUrl: this.$store.state.baseUrl,
     }
   },
   created(){
-    this.$http.get('http://localhost:3000/board/').then((res)=>{
+    this.$http.get(this.baseUrl+'/board/').then((res)=>{
       
       this.boardList=res.data;
     })

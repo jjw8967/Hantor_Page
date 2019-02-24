@@ -18,7 +18,7 @@ app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 app.use('/board',board)
-app.listen(3000,(err)=>{
+app.listen(8000,(err)=>{
 
 	if(err) console.log(err);
 	else console.log("Starting Port 3000");
