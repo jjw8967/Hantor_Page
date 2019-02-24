@@ -1,21 +1,26 @@
 <template>
   <div class="about">
-    <table class="boardBox">
-      <tr>
-        <th>번호</th>
-        <th>제목</th>
-        <th>작성자</th>
-        <th>등록일</th>
-      </tr>
-      <tr v-for="board in boardList" v-bind:key="board.num">
-        <td v-for="data in board" v-bind:key="data">
-          {{data}}
-        </td>
-      </tr>
+    <table class="table">
+      <thead>
+        <tr class="table-bordered">
+          <th class="table-bordered">#</th>
+          <th class="table-bordered" style="width:50%;">Title</th>
+          <th class="table-bordered" style="">Author</th>
+          <th class="table-bordered" >Date</th>
+        </tr>
+      </thead>
+      <tbody class="table-bordered">
+        <tr v-for="board in boardList">
+          <th>{{board.num}}</th>
+          <td class="board-title">{{board.title}}</td>
+          <td>{{board.author}}</td>
+          <td>{{board.date.substring(0,10)}}</td>
+        </tr>
+      </tbody>
     </table>
-    <button id='writeBtn' v-on:click="writeBoard()">
+    <button id="writeBtn" v-on:click="writeBoard()">
       <router-link to="/board/write">
-      <i class="glyphicon glyphicon-pencil" style="font-size: 3em;">
+      <i class="glyphicon glyphicon-pencil" style="font-size: 2.0em;color: white;">
         
       </i>
       </router-link>
@@ -32,10 +37,8 @@ export default{
   },
   created(){
     this.$http.get('http://localhost:3000/board/').then((res)=>{
-      let data =res.data;
-      for(let i=0;i<data.length;i++){
-
-      }
+      
+      this.boardList=res.data;
     })
   },
   methods:{
@@ -46,14 +49,11 @@ export default{
 }
 </script>
 <style>
-table.boardBox{
-  text-align: center;
-  border: 1px solid grey;
-  border-collapse: collapse;
-  width:100%;
+.table th,td{
+  text-align:center;
 }
-table.boardBox td,th{
-  border: 1px solid grey;
+.board-title{
+  text-align:left;
 }
 #writeBtn{
   outline: none;
@@ -63,8 +63,9 @@ table.boardBox td,th{
   right:50px;
   border-radius: 50%;
   size:100px;
-  padding: 15px;
-  background-color:rgb(214, 237, 255);
-  color: white;
+  padding: 17px;
+  background-color: #c2e6f0;
+  border-color:transparent;
+
 }
 </style>
