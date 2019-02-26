@@ -1,5 +1,7 @@
 <template>
   <div class="about">
+    <Header></Header>
+    <div class='section'>
     <table class="table">
       <thead>
         <tr class="table-bordered">
@@ -25,16 +27,21 @@
       </i>
       </router-link>
     </button>
+    </div>
   </div>
 </template>
 
 <script>
+import Header from "@/components/Header.vue"
 export default{
   data(){
     return{
       boardList:[],
       baseUrl: this.$store.state.baseUrl,
     }
+  },
+  components:{
+    Header,
   },
   created(){
     this.$http.get(this.baseUrl+'/board/').then((res)=>{
@@ -50,6 +57,7 @@ export default{
 }
 </script>
 <style>
+
 .table th,td{
   text-align:center;
 }

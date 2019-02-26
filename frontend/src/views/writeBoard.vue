@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Header></Header>
    <form>
   <div class="form-group">
     <label for="bord_title">Title</label>
@@ -17,6 +18,7 @@
 </div>
 </template>
 <script>
+  import Header from '@/components/Header.vue'
   export default{
     data(){
       return{
@@ -24,6 +26,9 @@
         content:"",
         baseUrl: this.$store.state.baseUrl,
       }
+    },
+    components:{
+      Header,
     },
     methods:{
       record(){

@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import Board from './views/Board.vue'
 import writeBoard from './views/writeBoard.vue'
 import getBoard from './views/getBoard'
+import Side from './views/Side'
 
 Vue.use(Router)
 
@@ -31,6 +32,11 @@ export default new Router({
       path: '/board/get/:num',
       component : getBoard,
       name: 'getBoard',
+    },
+    {
+      path: '/side',
+      component: Side,
+      name: 'Side',
     }
   ]
 })

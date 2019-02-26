@@ -1,16 +1,22 @@
 <template>
-<div>
-    <div class="top">
-        
+<div id="Header">
+    <div class="top bg-b">
+        <router-link to="/side">
+            <Drawer></Drawer>
+        </router-link>
         <span class="title">HANTOR</span>
         
-        <ul style="margin: 0 10%">    
+        <ul style="margin: 0 10px" >    
             
             <router-link to="/">
-                <li class="navList" v-on:click="navBtn('home')" >Home</li>
+                <li class="navList" v-on:click="navBtn('home')" >
+                    <span>Home</span>
+                </li>
             </router-link>
             <router-link to="/board">
-                <li class="navList" v-on:click="navBtn('board')">Board</li>
+                <li class="navList" v-on:click="navBtn('board')">
+                    <span>Board</span>
+                </li>
             </router-link>
 
         </ul>
@@ -19,12 +25,16 @@
 </div>
 </template>
 <script>
+import Drawer from "@/components/Drawer.vue"
 export default {
 data(){
     return{
     navLists:{},
     selected: null,
     }
+},
+components:{
+    Drawer,
 },
 methods:{
     navBtn(key){
@@ -55,12 +65,15 @@ mounted(){
 
 </script>
 <style>
-.top{
-    margin: 0 5%;
+#Header{
+    margin-bottom : 15px;
 }
+#Header span{
+    font-size: 25px;
+}
+
 .title{
     color:white;
-    font-size: 4vw;
     font-weight: bold;
 }
 
@@ -70,17 +83,16 @@ list-style-type: none;
 margin: 0;
 padding: 0;
 overflow: hidden;
-
 }
 
 .navList{
   
 display: inline-block;
 color: white;
-font-size : 3vw;
 text-align: center;
 padding: 14px 16px;
 text-decoration: none;
+
 }
 
 
