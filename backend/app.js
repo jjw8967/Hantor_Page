@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 
 const board = require('./routers/board')
+const user = require('./routers/user')
 
 require('./db/mongo') //connect db
 
@@ -18,6 +19,7 @@ app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 app.use('/board',board)
+app.use('/user',user)
 app.listen(8000,(err)=>{
 
 	if(err) console.log(err);
