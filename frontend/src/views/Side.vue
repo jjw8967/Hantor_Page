@@ -53,7 +53,7 @@ export default {
                 let user = {"email":this.email,"pw":this.pw}
                 this.$http.post(this.baseUrl+'/user/login',user)
                 .then((res)=>{
-                    console.log(res);
+
                 })
             }else{
                 alert("이메일 형식이 맞지 않습니다.")

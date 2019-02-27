@@ -1,13 +1,15 @@
 <template>
   <div id="getBoard">
+    <Header></Header>
+    <div class="section">
     <div class = "getBoard-board">
-        <p style="font-size: 4vw"
+        <p style="font-size: 25px"
         >{{board.title}}</p>
         <p style="color:grey">
             {{date}}
         </p>
         <hr>
-        <p style="font-size: 3vw">
+        <p style="font-size: 17px">
             {{board.content}}
         </p>
     </div>
@@ -18,8 +20,10 @@
         v-on:click="deleteBoard">Delete</button>
     </div>
   </div>
+  </div>
 </template>
 <script>
+import Header from "@/components/Header.vue"
 export default{
     data(){
         return{
@@ -28,6 +32,9 @@ export default{
             board:{},
             date: "",
         }
+    },
+    components:{
+        Header,
     },
     created(){
         this.$http.get(this.baseUrl+`/board/get/${this.boardNum}`)
@@ -56,9 +63,10 @@ export default{
     font-family: "Helvetica Neue","Apple SD Gothic Neo","Malgun Gothic","맑은 고딕",Dotum,"돋움",sans-serif;
     border:1px solid rgb(204, 204, 204);
     padding : 1%;
-    margin: 3% 0%;
+
 }
 #getBoard button{
-    margin: 0% 1%;
+    margin: 10px 0;
+    margin-right: 10px;
 }
 </style>
