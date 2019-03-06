@@ -17,6 +17,7 @@
                     <th class="table-bordered">이름</th>
                     <th class="table-bordered">학과</th>
                     <th class="table-bordered">학번</th>
+                    <th class="table-bordered">생년월일</th>
                     <th class="table-bordered">전화번호</th>
                 </tr>
             </thead>
@@ -27,6 +28,7 @@
                     <td>{{member.name}}</td>
                     <td>{{member.major}}</td>
                     <td>{{member.stdID}}</td>
+                    <td>{{member.birthday}}</td>
                     <td>{{member.phoneNum}}</td>
                 </tr>
             </tbody>

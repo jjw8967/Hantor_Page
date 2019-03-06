@@ -34,6 +34,12 @@
                 required pattern="[0-9]{9}" title="9자리 숫자를 입력하세요"
                 />
             </div>
+            
+            <div class="form-group">
+                <label for='birthday'>생년월일</label>
+                <input id='birthday' v-model="birthday" class='form-control'
+                required pattern="[0-9]{6}" title="6자리 숫자를 입력하세요"/>
+            </div>
 
             <div class="form-group">
                 <label for='phoneNum'>전화번호</label>
@@ -60,6 +66,7 @@ export default {
             major:"",
             phoneNum:"",
             etcMajor:"",
+            birthday:"",
             baseUrl: this.$store.state.baseUrl
         }
     },
@@ -91,6 +98,7 @@ export default {
                 "stdID" : this.stdID,
                 "name" : this.name,
                 "major" : major,
+                "birthday" : this.birthday,
                 "phoneNum" : this.phoneNum,
             }
 
