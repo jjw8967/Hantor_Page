@@ -38,4 +38,7 @@
 .section{
   margin: 0 5%;
 }
+.table{
+  border:1px grey solid;
+}
 </style>

@@ -5,6 +5,9 @@ import Board from './views/Board.vue'
 import writeBoard from './views/writeBoard.vue'
 import getBoard from './views/getBoard'
 import Side from './views/Side'
+import notFound from './views/notFound'
+import Join from './views/Join'
+import Member from './views/Member'
 
 Vue.use(Router)
 
@@ -37,6 +40,21 @@ export default new Router({
       path: '/side',
       component: Side,
       name: 'Side',
+    },
+    {
+      path: '/join',
+      component: Join,
+      name: 'Join',
+    },
+    {
+      path: '/member',
+      component: Member,
+      name: 'Member',
+    },
+    {
+      path: '*',
+      component: notFound,
+      name: 'Not Found',
     }
   ]
 })

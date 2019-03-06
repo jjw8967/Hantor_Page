@@ -2,7 +2,7 @@
   <div class="about">
     <Header></Header>
     <div class='section'>
-    <table class="table">
+    <table class="table table-hover">
       <thead>
         <tr class="table-bordered">
           <th class="table-bordered">#</th>

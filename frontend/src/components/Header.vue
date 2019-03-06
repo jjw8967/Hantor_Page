@@ -1,21 +1,26 @@
 <template>
 <div id="Header">
-    <div class="top bg-b">
+    <div class="bg-b" id="top">
         <router-link to="/side">
             <Drawer></Drawer>
         </router-link>
         <span class="title">HANTOR</span>
         
-        <ul style="margin: 0 10px" >    
+        <ul>    
             
             <router-link to="/">
-                <li class="navList" v-on:click="navBtn('home')" >
+                <li class="navList">
                     <span>Home</span>
                 </li>
             </router-link>
             <router-link to="/board">
-                <li class="navList" v-on:click="navBtn('board')">
+                <li class="navList">
                     <span>Board</span>
+                </li>
+            </router-link>
+            <router-link to="/join">
+                <li class="navList">
+                    <span>Join</span>  
                 </li>
             </router-link>
 
@@ -37,12 +42,6 @@ components:{
     Drawer,
 },
 methods:{
-    navBtn(key){
-    if(key==this.selected) return;
-    this.navLists[this.selected].style.backgroundColor="transparent";
-    this.navLists[key].style.backgroundColor="skyblue";
-    this.selected=key;
-    }
 },
 mounted(){
     let temp = document.getElementsByClassName('navList');
@@ -56,14 +55,18 @@ mounted(){
     if(path=='/') key='home'
     else key = path.split('/')[1];
     
-    this.navLists[key].style.backgroundColor = 'skyblue'; 
-    
-    this.selected = key;
+    try{
+        this.navLists[key].style.backgroundColor = 'skyblue'; 
+        this.selected = key;
+    }catch(e){
+
+    }
     
 }
 }
 
 </script>
+
 <style>
 #Header{
     margin-bottom : 15px;
@@ -72,17 +75,13 @@ mounted(){
     font-size: 25px;
 }
 
-.title{
-    color:white;
-    font-weight: bold;
-}
-
-ul {
+#top ul {
 display:inline;
 list-style-type: none;
 margin: 0;
 padding: 0;
 overflow: hidden;
+margin: 0 10px;
 }
 
 .navList{
@@ -95,6 +94,10 @@ text-decoration: none;
 
 }
 
+.title{
+    color:white;
+    font-weight: bold;
+}
 
 </style>
 

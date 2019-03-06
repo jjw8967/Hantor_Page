@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 
 const board = require('./routers/board')
 const user = require('./routers/user')
+const member = require('./routers/member')
 
 require('./db/mongo') //connect db
 
@@ -20,6 +21,8 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 app.use('/board',board)
 app.use('/user',user)
+app.use('/member',member)
+
 app.listen(8000,(err)=>{
 
 	if(err) console.log(err);
