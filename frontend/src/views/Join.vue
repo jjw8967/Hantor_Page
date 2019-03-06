@@ -38,12 +38,14 @@
             <div class="form-group">
                 <label for='birthday'>생년월일</label>
                 <input id='birthday' v-model="birthday" class='form-control'
+                placeholder="YYMMDD"
                 required pattern="[0-9]{6}" title="6자리 숫자를 입력하세요"/>
             </div>
 
             <div class="form-group">
                 <label for='phoneNum'>전화번호</label>
                 <input id='phoneNum' v-model="phoneNum" class='form-control'
+                placeholder="-없이 입력"
                 required pattern="[0-9]{10,11}" title="9~10자리 숫자를 입력하세요"/>
             </div>
 
@@ -106,7 +108,7 @@ export default {
                 let data = res.data;
                 if(data==='ok'){
                     alert("신청 완료되었습니다.")
-                    this.$router.push('/');
+                    window.location.reload();
 
                 }else if(data.search("duplicate key")){
                     alert("신청된 학번입니다.");

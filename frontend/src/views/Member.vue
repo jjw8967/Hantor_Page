@@ -4,8 +4,8 @@
     <div class="section">
         <div class='member-menu' style="background-color:">        
                 <i class="glyphicon glyphicon-search"></i>
-                <input placeholder="검색"/>
-            <button type="button"  class='exportBtn'>
+                <input placeholder="검색" v-model="search"/>
+            <button type="button"  class='exportBtn' @click="getExcel">
             <i class="glyphicon glyphicßon-open"></i>
             Export
         </button>
@@ -23,7 +23,8 @@
             </thead>
             <tbody>
                 <tr v-for="member in members" v-bind:key="member.num"
-                class="table-bordered">
+                class="table-bordered"
+                v-if="searchFn(member)">
                     <th>{{member.num}}</th>
                     <td>{{member.name}}</td>
                     <td>{{member.major}}</td>
@@ -33,7 +34,6 @@
                 </tr>
             </tbody>
         </table>
-        
     </div>
     </div>
 </template>
@@ -44,6 +44,7 @@ export default{
         return{
             baseUrl : this.$store.state.baseUrl,
             members:[],
+            search: "",
         }
     },
     mounted(){
@@ -51,6 +52,54 @@ export default{
             let data = res.data;
             this.members=data;
         })
+    },
+    computed:{
+        test(){
+            return this.search
+        }
+    },
+    methods:{
+        getExcel(){
+            let request = new XMLHttpRequest();
+            let url = this.baseUrl+"/member/output/excel"
+            let fileName = "member.xlsx"
+            request.open('POST', url, true);
+            request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+            request.responseType = 'blob';
+
+            request.onload = function(e) {
+                if (this.status === 200) {
+                    var blob = this.response;
+                    if(window.navigator.msSaveOrOpenBlob) {
+                        window.navigator.msSaveBlob(blob, fileName);
+                    }
+                    else{
+                        var downloadLink = window.document.createElement('a');
+                        var contentTypeHeader = request.getResponseHeader("Content-Type");
+                        downloadLink.href = window.URL.createObjectURL(new Blob([blob], { type: contentTypeHeader }));
+                        downloadLink.download = fileName;
+                        document.body.appendChild(downloadLink);
+                        downloadLink.click();
+                        document.body.removeChild(downloadLink);
+                    }
+                }
+            };
+            request.send();
+
+        },
+        searchFn(member){
+            let keyword = this.search;
+            if(keyword=="") return true;
+            else{
+                let value=0;
+                let data = [member.num,member.name,member.major,member.stdID,member.birthday,member.phoneNum];
+                for(let i in data){
+                    
+                    if((data[i]+"").search(keyword)!=-1) return true;
+                }
+            }
+            return false;
+        }
     },
     components:{
         Header,

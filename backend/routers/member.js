@@ -21,7 +21,7 @@ router.post('/join',(req,res)=>{
     })
 })
 
-router.get('/output/excel',(req,res)=>{
+router.post('/output/excel',(req,res)=>{
     
     memberModel.find().then((data)=>{
         excel(res,data);
