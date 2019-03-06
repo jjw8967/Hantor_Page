@@ -46,7 +46,7 @@
                 <label for='phoneNum'>전화번호</label>
                 <input id='phoneNum' v-model="phoneNum" class='form-control'
                 placeholder="-없이 입력"
-                required pattern="[0-9]{10,11}" title="9~10자리 숫자를 입력하세요"/>
+                required pattern="[0-9]{11}" title="9~10자리 숫자를 입력하세요"/>
             </div>
 
             <div class="form-group">
