@@ -48,7 +48,12 @@ export default{
         }
     },
     mounted(){
-        this.$http.post(this.baseUrl+'/member').then((res)=>{
+        let key = prompt("Enter key")
+        this.$http.post(this.baseUrl+'/member',{"key":key}).then((res)=>{
+            if(res.status===500){
+                alert("Fail");
+                this.$router.push("/");
+            }
             let data = res.data;
             this.members=data;
         })
@@ -69,7 +74,9 @@ export default{
 
             request.onload = function(e) {
                 if (this.status === 200) {
+        
                     var blob = this.response;
+                    
                     if(window.navigator.msSaveOrOpenBlob) {
                         window.navigator.msSaveBlob(blob, fileName);
                     }
@@ -82,9 +89,13 @@ export default{
                         downloadLink.click();
                         document.body.removeChild(downloadLink);
                     }
+                }else if(this.status === 500){
+                    alert("fail");
+                    return;
                 }
             };
-            request.send();
+            let key = prompt("key");
+            request.send(`key=${key}`);
 
         },
         searchFn(member){

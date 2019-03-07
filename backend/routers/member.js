@@ -7,9 +7,14 @@ const excel = require('./excel.js');
 module.exports = router;
 
 router.post('/',(req,res)=>{
-    memberModel.find().then((data)=>{
-        res.send(data);
-    })  
+    let key = req.body.key;
+    if(key==="godjinu"){
+        memberModel.find().then((data)=>{
+            res.send(data);
+        })  
+    }else{
+        res.status(500).send();
+    }
 })
 
 router.post('/join',(req,res)=>{
@@ -22,8 +27,13 @@ router.post('/join',(req,res)=>{
 })
 
 router.post('/output/excel',(req,res)=>{
+    let key = req.body.key;
     
-    memberModel.find().then((data)=>{
-        excel(res,data);
-    })
+    if(key == "godjinu"){
+        
+        memberModel.find().then((data)=>{
+            excel(res,data);
+        })
+    }
+    res.status(500).send();
 })
