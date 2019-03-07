@@ -34,6 +34,7 @@ router.post('/output/excel',(req,res)=>{
         memberModel.find().then((data)=>{
             excel(res,data);
         })
-    }
+    }else{
     res.status(500).send();
+    }
 })
