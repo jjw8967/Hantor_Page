@@ -21,8 +21,9 @@ module.exports = function(res,data){
         worksheet.cell(i+1,1).number(element.num).style(style);
         worksheet.cell(i+1,2).string(element.name).style(style);
         worksheet.cell(i+1,3).string(element.stdID).style(style);
-        worksheet.cell(i+1,4).string(element.birthday).style(style);
-        worksheet.cell(i+1,5).string(element.phoneNum).style(style);
+        worksheet.cell(i+1,4).string(element.major).style(style);
+        worksheet.cell(i+1,5).string(element.birthday).style(style);
+        worksheet.cell(i+1,6).string(element.phoneNum).style(style);
     }
 
     workbook.write('member.xlsx',res);
