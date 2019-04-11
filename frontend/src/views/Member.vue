@@ -19,6 +19,8 @@
                     <th class="table-bordered">학번</th>
                     <th class="table-bordered">생년월일</th>
                     <th class="table-bordered">전화번호</th>
+                    <th class="table-bordered">수정</th>
+                    <th class="table-bordered">삭제</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,6 +33,8 @@
                     <td>{{member.stdID}}</td>
                     <td>{{member.birthday}}</td>
                     <td>{{member.phoneNum}}</td>
+                    <td><i @click="" class="glyphicon glyphicon-pencil" style="cursor:pointer;" ></i></td>
+                    <td><i @click="deleteMember(member.stdID)" class="glyphicon glyphicon-remove" style="cursor:pointer;"></i></td>
                 </tr>
             </tbody>
         </table>
@@ -48,7 +52,8 @@ export default{
         }
     },
     mounted(){
-        let key = prompt("Enter key")
+        //let key = prompt("Enter key")
+        let key="godjinu"
         this.$http.post(this.baseUrl+'/member',{"key":key}).then((res)=>{
             if(res.status===500){
                 alert("Fail");
@@ -110,6 +115,15 @@ export default{
                 }
             }
             return false;
+        },
+        deleteMember(stdID){
+            if(confirm("학번 "+stdID+" 학생을 삭제하시겠습니까?")){
+                this.$http.post(this.baseUrl+"/member/delete",{"stdID":stdID}).then((req,res)=>{
+                    confirm("삭제 완료됬습니다.");
+                    window.location.reload();
+                    
+                })
+            }
         }
     },
     components:{

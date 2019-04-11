@@ -26,6 +26,15 @@ router.post('/join',(req,res)=>{
     })
 })
 
+router.post('/delete',(req,res)=>{
+    let stdID = req.body.stdID;
+    memberModel.deleteOne({"stdID":stdID}).then(()=>{
+        res.send("ok");
+    }).catch((err)=>{
+        res.send(err.errmsg);
+    })
+})
+
 router.post('/output/excel',(req,res)=>{
     let key = req.body.key;
     
