@@ -118,10 +118,11 @@ export default{
         },
         deleteMember(stdID){
             if(confirm("학번 "+stdID+" 학생을 삭제하시겠습니까?")){
-                this.$http.post(this.baseUrl+"/member/delete",{"stdID":stdID}).then((req,res)=>{
-                    confirm("삭제 완료됬습니다.");
-                    window.location.reload();
-                    
+                this.$http.post(this.baseUrl+"/member/delete",{"stdID":stdID}).then((res)=>{
+                    if(res.data=="ok"){
+                        confirm("삭제 완료됬습니다.");
+                        window.location.reload();
+                    }
                 })
             }
         }
